@@ -5,7 +5,11 @@
  * Created by usamaahmed on 2/16/17.
  */
 import React , { Component } from 'react';
+import { Router , Route , IndexRoute , hashHistory } from 'react-router';
 import App from './app';
+import Layout from './components/Layout';
+import Test from './components/Test';
+import TestAnother from './components/TestAnother';
 
 export default class Routes extends Component {
 
@@ -15,11 +19,13 @@ export default class Routes extends Component {
 
     render() {
         return (
-            <div>
-                <h1>react js started</h1>
-                <h2> routes file</h2>
-                <App/>
-            </div>
+            <Router history={hashHistory}>
+                <Route path="/" component={App}>
+                    <IndexRoute component={Layout}></IndexRoute>
+                    <Route path="test1" component={Test}></Route>
+                    <Route path="test2" component={TestAnother}></Route>
+                </Route>
+            </Router>
         );
     }
 }
